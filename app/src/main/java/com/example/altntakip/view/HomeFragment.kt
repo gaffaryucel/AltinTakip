@@ -16,6 +16,7 @@ import com.example.altntakip.adapter.GoldAdapter
 import com.example.altntakip.adapter.PriceAdapter
 import com.example.altntakip.databinding.FragmentHomeBinding
 import com.example.altntakip.model.AlphaVantageResponse
+import com.example.altntakip.util.Metals
 import com.example.altntakip.viewmodel.HomeViewModel
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
@@ -63,15 +64,29 @@ class HomeFragment : Fragment() {
         goldAdapter = GoldAdapter()
         binding.recyclerViewGold.adapter = goldAdapter
 
-        // ViewModel'dan veri al ve Adapter'ı güncelle
-        viewModel.goldPriceLiveData.observe(viewLifecycleOwner) { goldInfoList ->
-            goldAdapter.submitList(goldInfoList)
-        }
 
         // Altın fiyatlarını çek
-        viewModel.fetchGoldPrice()
+        viewModel.fetchGoldPrice("XAU")
+        viewModel.fetchMetalPrices()
     }
 
+    override fun onResume() {
+        super.onResume()
+        observeLiveData()
+
+    }
+    private fun observeLiveData() {
+        // ViewModel'dan veri al ve Adapter'ı güncelle
+        viewModel.silverPriceLiveData.observe(viewLifecycleOwner) { goldInfoList ->
+            binding.silverInfo = goldInfoList
+        }
+        viewModel.platinumPriceLiveData.observe(viewLifecycleOwner) { platinumData ->
+            binding.platinumInfo = platinumData
+        }
+        viewModel.palladiumPriceLiveData.observe(viewLifecycleOwner) { palladiumData ->
+            binding.palladiumInfo = palladiumData
+        }
+    }
 }
 
 

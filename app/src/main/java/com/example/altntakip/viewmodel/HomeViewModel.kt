@@ -15,6 +15,7 @@ import com.example.altntakip.model.AlphaVantageResponse
 import com.example.altntakip.model.GoldInfo
 import com.example.altntakip.model.GoldPriceResponse
 import com.example.altntakip.repo.ApiRepository
+import com.example.altntakip.util.Metals
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
@@ -34,7 +35,14 @@ class HomeViewModel @Inject constructor(
     private val _goldPriceLiveData = MutableLiveData<List<GoldInfo>?>()
     val goldPriceLiveData: LiveData<List<GoldInfo>?> get() = _goldPriceLiveData
 
+    private val _silverPriceLiveData = MutableLiveData<GoldInfo>()
+    val silverPriceLiveData: LiveData<GoldInfo> get() = _silverPriceLiveData
 
+    private val _platinumPriceLiveData = MutableLiveData<GoldInfo>()
+    val platinumPriceLiveData: LiveData<GoldInfo> get() = _platinumPriceLiveData
+
+    private val _palladiumPriceLiveData = MutableLiveData<GoldInfo>()
+    val palladiumPriceLiveData: LiveData<GoldInfo> get() = _palladiumPriceLiveData
 
     fun getStockMarketPrice(binding : FragmentHomeBinding,context : Context) {
         viewModelScope.launch {
@@ -103,21 +111,40 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun fetchGoldPrice() = viewModelScope.launch{
-        println("fetchGoldPrice")
-        val response = goldRepository.getGoldPrice()
-        if (response.isSuccessful) {
-            println("isSuccessful")
-            val goldPrice = response.body()
-            if (goldPrice != null) {
-                _goldPriceLiveData.value = mapGoldPriceResponseToGoldInfo(goldPrice)
+    fun fetchGoldPrice(metal: String) = viewModelScope.launch {
+        try {
+            val response = goldRepository.getGoldPrice(metal)
+            if (response.isSuccessful) {
+                val goldPrice = response.body()
+                if (goldPrice != null) {
+                    _goldPriceLiveData.value = mapGoldPriceResponseToGoldInfo(goldPrice)
+                } else {
+                    // Gold price body is null
+                    println("Error: Received null response body")
+                }
             } else {
-                println("Error: Null response")
+                // API response not successful
+                println("Error: API call failed with status code ${response.code()}")
+                println("Error message: ${response.message()}")
+                response.errorBody()?.let { errorBody ->
+                    println("Error body: ${errorBody.string()}")
+                }
             }
-        } else {
-            println("Error: Null response")
+        } catch (e: Exception) {
+            // Handle any exceptions thrown during the API call
+            println("Error: Exception occurred during API call: ${e.localizedMessage}")
         }
     }
+
+    fun fetchMetalPrices() = viewModelScope.launch{
+        val response1 = goldRepository.getGoldPrice(Metals.XAG.toString())
+        if (response1.isSuccessful) {
+            val price = response1.body()
+            println(price)
+        }
+
+    }
+
     private fun mapGoldPriceResponseToGoldInfo(goldPrice: GoldPriceResponse): List<GoldInfo> {
         val price24k = goldPrice.price_gram_24k
         val price22k = goldPrice.price_gram_22k
@@ -165,6 +192,56 @@ class HomeViewModel @Inject constructor(
             )
         )
     }
+    private fun mapSilverPriceResponseToGoldInfo(silverPrice: GoldPriceResponse) {
+        val priceGram = silverPrice.price
+        val priceChange = silverPrice.ch
+        val priceChangePercentage = silverPrice.chp
 
+        // Fiyat değişiminin yönünü belirleme
+        val priceChangeDirection = if (priceChange >= 0) "up" else "down"
+
+        _silverPriceLiveData.value = GoldInfo(
+                type = "Gram Gümüş",
+                purity = "Saflık: %99.9",
+                weight = "Ağırlık: 1 gram",
+                priceChange = "${String.format("%.2f", priceChange)} USD (${String.format("%.2f", priceChangePercentage)}%)",
+                currentPrice = "${String.format("%.2f", priceGram)} USD",
+                priceChangeDirection = priceChangeDirection
+        )
+    }
+    private fun mapPlatinumPriceResponseToGoldInfo(platinumPrice: GoldPriceResponse) {
+        val priceGram = platinumPrice.price
+        val priceChange = platinumPrice.ch
+        val priceChangePercentage = platinumPrice.chp
+
+        // Fiyat değişiminin yönünü belirleme
+        val priceChangeDirection = if (priceChange >= 0) "up" else "down"
+
+            _platinumPriceLiveData.value = GoldInfo(
+                type = "Gram Platin",
+                purity = "Saflık: %99.9",
+                weight = "Ağırlık: 1 gram",
+                priceChange = "${String.format("%.2f", priceChange)} USD (${String.format("%.2f", priceChangePercentage)}%)",
+                currentPrice = "${String.format("%.2f", priceGram)} USD",
+                priceChangeDirection = priceChangeDirection
+            )
+    }
+    private fun mapPalladiumPriceResponseToGoldInfo(palladiumPrice: GoldPriceResponse) {
+        val priceGram = palladiumPrice.price
+        val priceChange = palladiumPrice.ch
+        val priceChangePercentage = palladiumPrice.chp
+
+        // Fiyat değişiminin yönünü belirleme
+        val priceChangeDirection = if (priceChange >= 0) "up" else "down"
+
+        _palladiumPriceLiveData.value = GoldInfo(
+            type = "Gram Paladyum",
+            purity = "Saflık: %99.9",
+            weight = "Ağırlık: 1 gram",
+            priceChange = "${String.format("%.2f", priceChange)} USD (${String.format("%.2f", priceChangePercentage)}%)",
+            currentPrice = "${String.format("%.2f", priceGram)} USD",
+            priceChangeDirection = priceChangeDirection
+        )
+    }
 
 }

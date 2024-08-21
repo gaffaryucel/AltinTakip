@@ -14,7 +14,7 @@ class ApiRepositoryImpl @Inject constructor(
     override suspend fun getMarketPrice(function  :String,symbol: String, interval: String, apiKey: String): Response<AlphaVantageResponse> {
         return stockMarketApi.getGoldPrice(function = function,symbol = symbol, interval = interval, apiKey = apiKey)
     }
-    override suspend fun getGoldPrice(): Response<GoldPriceResponse> {
-        return goldPriceApi.getGoldPrice()
+    override suspend fun getGoldPrice(metal  :String): Response<GoldPriceResponse> {
+        return goldPriceApi.getGoldPrice(metal)
     }
 }
