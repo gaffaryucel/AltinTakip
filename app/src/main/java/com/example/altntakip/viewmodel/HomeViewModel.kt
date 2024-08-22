@@ -143,7 +143,7 @@ class HomeViewModel @Inject constructor(
             println(price)
         }
 
-    }//sjafglkfdjhngçövcbmşljetgmlkxföm
+    }
 
     private fun mapGoldPriceResponseToGoldInfo(goldPrice: GoldPriceResponse): List<GoldInfo> {
         val price24k = goldPrice.price_gram_24k
