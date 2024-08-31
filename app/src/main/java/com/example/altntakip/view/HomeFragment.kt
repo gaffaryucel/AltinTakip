@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.example.altntakip.adapter.GoldAdapter
@@ -56,6 +57,7 @@ class HomeFragment : Fragment() {
 
 
         viewModel.getGoldData()
+
         // Altın fiyatlarını çek
     }
 

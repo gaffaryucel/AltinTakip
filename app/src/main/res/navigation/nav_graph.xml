@@ -8,5 +8,13 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.altntakip.view.HomeFragment"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_addJewelryFragment"
+            app:destination="@id/addJewelryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addJewelryFragment"
+        android:name="com.example.altntakip.view.AddJewelryFragment"
+        android:label="AddJewelryFragment" />
 </navigation>
