@@ -1,6 +1,7 @@
 package com.example.altntakip.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
@@ -8,7 +9,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.altntakip.R
 import com.example.altntakip.databinding.ItemGoldBinding
+import com.example.altntakip.model.CurrencyData
 import com.example.altntakip.model.GoldInfo
+import com.example.altntakip.util.CurrencyType
 
 class GoldAdapter : ListAdapter<GoldInfo, GoldAdapter.GoldViewHolder>(GoldInfoDiffCallback()) {
 
@@ -24,10 +27,26 @@ class GoldAdapter : ListAdapter<GoldInfo, GoldAdapter.GoldViewHolder>(GoldInfoDi
 
     class GoldViewHolder(private val binding: ItemGoldBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(goldInfo: GoldInfo) {
+            if (goldInfo.type.equals(CurrencyType.USD)){
+                binding.ivCurrency.setImageResource(R.drawable.dollar)
+                binding.purity.text = "Satış fiyatı : "+goldInfo.selling
+                binding.tvType.text = "Döviz"
+                binding.tvCurrencyName.text = "Amerikan Doları"
+                binding.weight.text =  "Son Güncelleme : Bugün"
+            }
+            if (goldInfo.type.equals(CurrencyType.EUR)){
+                binding.ivCurrency.setImageResource(R.drawable.euro)
+                binding.purity.text = "Satış fiyatı : "+goldInfo.selling
+                binding.tvType.text = "Döviz"
+                binding.tvCurrencyName.text = "Euro GÜncel Kur"
+                binding.weight.text =  "Son Güncelleme : Bugün"
+            }
+            if (goldInfo.type.equals(CurrencyType.GOLD)){
+                binding.tvType.text = "Altın"
+                binding.tvCurrencyName.text = "24 Ayar Gram Altın"
+            }
             binding.goldInfo = goldInfo
             // Renklerin dinamik olarak güncellenmesini sağlayın
-            val color = if (goldInfo.priceChangeDirection == "up") R.color.green else R.color.red
-            binding.priceChange.setTextColor(ContextCompat.getColor(binding.root.context, color))
             binding.executePendingBindings()
         }
     }

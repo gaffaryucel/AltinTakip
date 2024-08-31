@@ -1,13 +1,14 @@
 package com.example.altntakip.di
 
+import com.example.altntakip.api.FinanceService
 import com.example.altntakip.api.GoldPriceApi
 import com.example.altntakip.api.StockMarketApi
 import com.example.altntakip.repo.ApiRepository
 import com.example.altntakip.repo.ApiRepositoryImpl
+import com.example.altntakip.util.Util.FINANCE_SERVICE_BASE_URL
 import com.example.altntakip.util.Util.GOLD_API_KEY
 import com.example.altntakip.util.Util.GOLD_BASE_URL
 import com.example.altntakip.util.Util.MARKET_BASE_URL
-import com.example.altntakip.view.HomeFragment
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -55,10 +56,19 @@ object NetworkModule {
             .create(StockMarketApi::class.java)
     }
 
+    @Provides
+    @Singleton
+    fun provideFinanceApi(): FinanceService {
+        val retrofit = Retrofit.Builder()
+            .baseUrl(FINANCE_SERVICE_BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
 
+        return retrofit.create(FinanceService::class.java)
+    }
 
     @Provides
-    fun provideGOldApi(): GoldPriceApi {
+    fun provideGoldApi(): GoldPriceApi {
       val httpClient = OkHttpClient.Builder().apply {
           addInterceptor { chain ->
               val originalRequest = chain.request()
@@ -78,11 +88,11 @@ object NetworkModule {
           .client(httpClient)
           .build()
           .create(GoldPriceApi::class.java)
-
     }
 
+    @Singleton
     @Provides
-    fun provideGoldRepository(stockMarketApi: StockMarketApi,goldApi : GoldPriceApi): ApiRepository {
-        return ApiRepositoryImpl(stockMarketApi,goldApi)
+    fun provideGoldRepository(financeService : FinanceService,stockMarketApi: StockMarketApi,goldApi : GoldPriceApi): ApiRepository {
+        return ApiRepositoryImpl(financeService,stockMarketApi,goldApi)
     }
 }

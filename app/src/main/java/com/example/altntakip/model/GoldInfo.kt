@@ -1,11 +1,12 @@
 package com.example.altntakip.model
 
+import com.example.altntakip.util.CurrencyType
+
 data class GoldInfo(
-    val type: String,
-    val purity: String,
-    val weight: String,
-    val currentPrice: String,
-    val priceChange: String,
-    val priceChangeDirection: String // "up" or "down"
+    val name: String,
+    val buying: String,
+    val selling: String,
+    val change: String,
+    val type: CurrencyType,
 )
 

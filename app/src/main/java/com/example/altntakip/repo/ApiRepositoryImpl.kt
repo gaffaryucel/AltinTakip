@@ -1,13 +1,17 @@
 package com.example.altntakip.repo
 
+import com.example.altntakip.api.FinanceService
 import com.example.altntakip.api.GoldPriceApi
 import com.example.altntakip.api.StockMarketApi
 import com.example.altntakip.model.AlphaVantageResponse
+import com.example.altntakip.model.FinanceResponse
 import com.example.altntakip.model.GoldPriceResponse
+import retrofit2.Call
 import retrofit2.Response
 import javax.inject.Inject
 
 class ApiRepositoryImpl @Inject constructor(
+    private val financeService : FinanceService,
     private val stockMarketApi : StockMarketApi,
     private val goldPriceApi: GoldPriceApi
 ) : ApiRepository {
@@ -16,5 +20,8 @@ class ApiRepositoryImpl @Inject constructor(
     }
     override suspend fun getGoldPrice(metal  :String): Response<GoldPriceResponse> {
         return goldPriceApi.getGoldPrice(metal)
+    }
+    override suspend fun getGoldData(): Call<FinanceResponse> {
+        return financeService.getTodayData()
     }
 }

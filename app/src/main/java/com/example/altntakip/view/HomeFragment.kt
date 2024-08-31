@@ -1,39 +1,25 @@
 package com.example.altntakip.view
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
-import com.example.altntakip.R
 import com.example.altntakip.adapter.GoldAdapter
-import com.example.altntakip.adapter.PriceAdapter
+import com.example.altntakip.api.FinanceService
 import com.example.altntakip.databinding.FragmentHomeBinding
-import com.example.altntakip.model.AlphaVantageResponse
-import com.example.altntakip.util.Metals
+import com.example.altntakip.model.CurrencyData
+import com.example.altntakip.model.FinanceResponse
 import com.example.altntakip.viewmodel.HomeViewModel
-import com.github.mikephil.charting.components.XAxis
-import com.github.mikephil.charting.data.Entry
-import com.github.mikephil.charting.data.LineData
-import com.github.mikephil.charting.data.LineDataSet
-import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
-import com.github.mikephil.charting.utils.ColorTemplate
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.GET
-import retrofit2.http.Query
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -64,10 +50,8 @@ class HomeFragment : Fragment() {
         goldAdapter = GoldAdapter()
         binding.recyclerViewGold.adapter = goldAdapter
 
-
+        viewModel.getGoldData()
         // Altın fiyatlarını çek
-        viewModel.fetchGoldPrice("XAU")
-        viewModel.fetchMetalPrices()
     }
 
     override fun onResume() {
@@ -76,17 +60,14 @@ class HomeFragment : Fragment() {
 
     }
     private fun observeLiveData() {
+        println("observe")
         // ViewModel'dan veri al ve Adapter'ı güncelle
-        viewModel.silverPriceLiveData.observe(viewLifecycleOwner) { goldInfoList ->
-            binding.silverInfo = goldInfoList
-        }
-        viewModel.platinumPriceLiveData.observe(viewLifecycleOwner) { platinumData ->
-            binding.platinumInfo = platinumData
-        }
-        viewModel.palladiumPriceLiveData.observe(viewLifecycleOwner) { palladiumData ->
-            binding.palladiumInfo = palladiumData
+
+        viewModel._goldLiveData.observe(viewLifecycleOwner) {
+            goldAdapter.submitList(it)
         }
     }
+
 }
 
 
