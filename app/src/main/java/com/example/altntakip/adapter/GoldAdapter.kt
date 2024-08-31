@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -12,6 +13,7 @@ import com.example.altntakip.databinding.ItemGoldBinding
 import com.example.altntakip.model.CurrencyData
 import com.example.altntakip.model.GoldInfo
 import com.example.altntakip.util.CurrencyType
+import com.example.altntakip.view.HomeFragmentDirections
 
 class GoldAdapter : ListAdapter<GoldInfo, GoldAdapter.GoldViewHolder>(GoldInfoDiffCallback()) {
 
@@ -27,6 +29,10 @@ class GoldAdapter : ListAdapter<GoldInfo, GoldAdapter.GoldViewHolder>(GoldInfoDi
 
     class GoldViewHolder(private val binding: ItemGoldBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(goldInfo: GoldInfo) {
+            binding.currentPrice.setOnClickListener{
+                val action = HomeFragmentDirections.actionHomeFragmentToAddJewelryFragment()
+                Navigation.findNavController(it).navigate(action)
+            }
             if (goldInfo.type.equals(CurrencyType.USD)){
                 binding.ivCurrency.setImageResource(R.drawable.dollar)
                 binding.purity.text = "Satış fiyatı : "+goldInfo.selling

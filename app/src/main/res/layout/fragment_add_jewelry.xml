@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- ID -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ID"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etJewelryId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter ID" />
+
+        <!-- Name -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etJewelryName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Jewelry Name" />
+
+        <!-- Price -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Price"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etJewelryPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Price"
+            android:inputType="numberDecimal" />
+
+        <!-- Discount Percentage -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Discount Percentage"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etDiscountPercentage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Discount Percentage"
+            android:inputType="number" />
+
+        <!-- Metal Type -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Metal Type"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/spinnerMetalType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Karat -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Karat"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etKarat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Karat"
+            android:inputType="number" />
+
+        <!-- Weight -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Weight (grams)"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etWeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Weight (optional)"
+            android:inputType="numberDecimal" />
+
+        <!-- Gemstone -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gemstone"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etGemstone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Gemstone (optional)" />
+
+        <!-- Gender -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gender"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/spinnerGender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Category -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Category"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/spinnerCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Image URL -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Image URL"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etImageUrl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Image URL" />
+
+        <!-- In Stock -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="In Stock"
+            android:textStyle="bold" />
+
+        <Switch
+            android:id="@+id/switchInStock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!-- Rating -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rating"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etRating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Rating (optional)"
+            android:inputType="numberDecimal" />
+
+        <!-- Reviews Count -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reviews Count"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etReviewsCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Reviews Count (optional)"
+            android:inputType="number" />
+
+        <!-- Material -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Material"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etMaterial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Material (optional)" />
+
+        <!-- Brand -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Brand"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etBrand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Brand (optional)" />
+
+        <!-- Description -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Description (optional)"
+            android:inputType="textMultiLine" />
+
+        <!-- Save Button -->
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save Jewelry" />
+
+    </LinearLayout>
+</ScrollView>

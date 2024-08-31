@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Gender List -->
+    <string-array name="gender_list">
+        <item>Unisex</item>
+        <item>Erkek</item>
+        <item>Kadın</item>
+    </string-array>
+
+    <!-- Metal Type List -->
+    <string-array name="metal_type_list">
+        <item>Altın</item>
+        <item>Gümüş</item>
+        <item>Platin</item>
+        <item>Beyaz Altın</item>
+    </string-array>
+
+    <!-- Category List -->
+    <string-array name="category_list">
+        <item>Yüzük</item>
+        <item>Kolye</item>
+        <item>Bilezik</item>
+        <item>Küpe</item>
+    </string-array>
+</resources>

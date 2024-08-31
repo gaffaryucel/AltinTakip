@@ -16,7 +16,9 @@ import com.example.altntakip.model.CurrencyData
 import com.example.altntakip.model.FinanceResponse
 import com.example.altntakip.model.GoldInfo
 import com.example.altntakip.model.GoldPriceResponse
+import com.example.altntakip.model.JewelryModel
 import com.example.altntakip.repo.ApiRepository
+import com.example.altntakip.repo.FirebaseRepository
 import com.example.altntakip.util.CurrencyType
 import com.example.altntakip.util.Metals
 import com.github.mikephil.charting.components.XAxis
@@ -30,12 +32,14 @@ import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.UUID
 import javax.inject.Inject
 
 // HomeViewModel.kt
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val goldRepository: ApiRepository
+    private val goldRepository: ApiRepository,
+    private val firebaseRepository: FirebaseRepository
 ) : ViewModel() {
 
     private val _goldPriceLiveData = MutableLiveData<List<GoldInfo>?>()
@@ -51,7 +55,6 @@ class HomeViewModel @Inject constructor(
 
     private val _palladiumPriceLiveData = MutableLiveData<GoldInfo>()
     val palladiumPriceLiveData: LiveData<GoldInfo> get() = _palladiumPriceLiveData
-
 
     fun getGoldData() = viewModelScope.launch{
         val call = goldRepository.getGoldData()
@@ -99,5 +102,6 @@ class HomeViewModel @Inject constructor(
             }
         })
     }
+
 
 }
