@@ -16,369 +16,393 @@
             name="palladiumInfo"
             type="com.example.altntakip.model.GoldInfo" />
     </data>
-
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewGold"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" />
-
-        <me.relex.circleindicator.CircleIndicator2
-            android:id="@+id/circleindicator"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            app:ci_drawable="@drawable/indicator_drawable"
-            app:ci_gravity="center"
-            app:ci_orientation="horizontal"
-            android:visibility="visible"
-            app:ci_drawable_unselected="@drawable/indicator_drawable"/>
-
+        android:layout_height="wrap_content">
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <!-- Silver Card -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="300dp"
-                android:layout_height="150dp"
-                android:layout_margin="8dp"
-                android:backgroundTint="#D3D3D3"
-                app:cardCornerRadius="20dp">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewGold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" />
 
-                    <ImageView
-                        android:id="@+id/ivSilver"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_margin="10dp"
-                        android:src="@drawable/silver"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:orientation="vertical"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/ivSilver">
+                <TextView
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:text="Diğer Ürünler"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
 
-                        <TextView
-                            android:id="@+id/silverType"
+                <TextView
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:text="Tümünü Gör"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewJewelry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" />
+
+
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Silver Card -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="300dp"
+                    android:layout_height="150dp"
+                    android:layout_margin="8dp"
+                    android:backgroundTint="#D3D3D3"
+                    app:cardCornerRadius="20dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/ivSilver"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_margin="10dp"
+                            android:src="@drawable/silver"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="8dp"
-                            android:textColor="@color/black"
-                            android:textSize="16dp"
-                            android:textStyle="bold"
-                            tools:text="Gümüş" />
+                            android:layout_marginStart="10dp"
+                            android:orientation="vertical"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/ivSilver">
+
+                            <TextView
+                                android:id="@+id/silverType"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:textColor="@color/black"
+                                android:textSize="16dp"
+                                android:textStyle="bold"
+                                tools:text="Gümüş" />
+
+                            <TextView
+                                android:id="@+id/silverPurity"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                tools:text="Saflık: %99.9" />
+
+                            <TextView
+                                android:id="@+id/silverWeight"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                tools:text="Ağırlık: 1 gram" />
+
+                        </LinearLayout>
 
                         <TextView
-                            android:id="@+id/silverPurity"
+                            android:id="@+id/silverPriceChange"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="4dp"
-                            android:textColor="@color/black"
-                            android:textSize="16sp"
-                            tools:text="Saflık: %99.9" />
+                            android:layout_marginEnd="10dp"
+                            android:textColor="#289104"
+                            android:textSize="24sp"
+                            app:layout_constraintBottom_toBottomOf="@id/ivSilver"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/ivSilver"
+                            tools:text="+%3" />
 
                         <TextView
-                            android:id="@+id/silverWeight"
+                            android:id="@+id/silverCurrentPrice"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="4dp"
+                            android:layout_margin="10dp"
                             android:textColor="@color/black"
-                            android:textSize="16sp"
-                            tools:text="Ağırlık: 1 gram" />
+                            android:textSize="24sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            tools:text="₺30" />
 
-                    </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <TextView
-                        android:id="@+id/silverPriceChange"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="10dp"
-                        android:textColor="#289104"
-                        android:textSize="24sp"
-                        app:layout_constraintBottom_toBottomOf="@id/ivSilver"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/ivSilver"
-                        tools:text="+%3" />
+                </androidx.cardview.widget.CardView>
 
-                    <TextView
-                        android:id="@+id/silverCurrentPrice"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:textColor="@color/black"
-                        android:textSize="24sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        tools:text="₺30" />
+                <!-- Platinum Card -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="300dp"
+                    android:layout_height="150dp"
+                    android:layout_margin="8dp"
+                    android:backgroundTint="#E5E4E2"
+                    app:cardCornerRadius="20dp">
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
-            </androidx.cardview.widget.CardView>
+                        <ImageView
+                            android:id="@+id/ivPlatinum"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_margin="10dp"
+                            android:src="@drawable/silver"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- Platinum Card -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="300dp"
-                android:layout_height="150dp"
-                android:layout_margin="8dp"
-                android:backgroundTint="#E5E4E2"
-                app:cardCornerRadius="20dp">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:orientation="vertical"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/ivPlatinum">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                            <TextView
+                                android:id="@+id/platinumType"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:textColor="@color/black"
+                                android:textSize="16dp"
+                                android:textStyle="bold"
+                                tools:text="Platin" />
 
-                    <ImageView
-                        android:id="@+id/ivPlatinum"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_margin="10dp"
-                        android:src="@drawable/silver"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                            <TextView
+                                android:id="@+id/platinumPurity"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                tools:text="Saflık: %99.9" />
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:orientation="vertical"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/ivPlatinum">
+                            <TextView
+                                android:id="@+id/platinumWeight"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                tools:text="Ağırlık: 1 gram" />
+
+                        </LinearLayout>
 
                         <TextView
-                            android:id="@+id/platinumType"
+                            android:id="@+id/platinumPriceChange"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="8dp"
-                            android:textColor="@color/black"
-                            android:textSize="16dp"
-                            android:textStyle="bold"
-                            tools:text="Platin" />
+                            android:layout_marginEnd="10dp"
+                            android:textColor="#289104"
+                            android:textSize="24sp"
+                            app:layout_constraintBottom_toBottomOf="@id/ivPlatinum"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/ivPlatinum"
+                            tools:text="+%3" />
 
                         <TextView
-                            android:id="@+id/platinumPurity"
+                            android:id="@+id/platinumCurrentPrice"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="4dp"
+                            android:layout_margin="10dp"
                             android:textColor="@color/black"
-                            android:textSize="16sp"
-                            tools:text="Saflık: %99.9" />
+                            android:textSize="24sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            tools:text="₺2.600" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- Palladium Card -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="300dp"
+                    android:layout_height="150dp"
+                    android:layout_margin="8dp"
+                    android:backgroundTint="#E0E0E0"
+                    app:cardCornerRadius="20dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/ivPalladium"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_margin="10dp"
+                            android:src="@drawable/silver"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:orientation="vertical"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/ivPalladium">
+
+                            <TextView
+                                android:id="@+id/palladiumType"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:textColor="@color/black"
+                                android:textSize="16dp"
+                                android:textStyle="bold"
+                                tools:text="Paladyum" />
+
+                            <TextView
+                                android:id="@+id/palladiumPurity"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                tools:text="Saflık: %99.9" />
+
+                            <TextView
+                                android:id="@+id/palladiumWeight"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="4dp"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                tools:text="Ağırlık: 1 gram" />
+
+                        </LinearLayout>
 
                         <TextView
-                            android:id="@+id/platinumWeight"
+                            android:id="@+id/palladiumPriceChange"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="4dp"
-                            android:textColor="@color/black"
-                            android:textSize="16sp"
-                            tools:text="Ağırlık: 1 gram" />
-
-                    </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/platinumPriceChange"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="10dp"
-                        android:textColor="#289104"
-                        android:textSize="24sp"
-                        app:layout_constraintBottom_toBottomOf="@id/ivPlatinum"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/ivPlatinum"
-                        tools:text="+%3" />
-
-                    <TextView
-                        android:id="@+id/platinumCurrentPrice"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:textColor="@color/black"
-                        android:textSize="24sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        tools:text="₺2.600" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <!-- Palladium Card -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="300dp"
-                android:layout_height="150dp"
-                android:layout_margin="8dp"
-                android:backgroundTint="#E0E0E0"
-                app:cardCornerRadius="20dp">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:id="@+id/ivPalladium"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_margin="10dp"
-                        android:src="@drawable/silver"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:orientation="vertical"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/ivPalladium">
+                            android:layout_marginEnd="10dp"
+                            android:textColor="#289104"
+                            android:textSize="24sp"
+                            app:layout_constraintBottom_toBottomOf="@id/ivPalladium"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/ivPalladium"
+                            tools:text="+%3" />
 
                         <TextView
-                            android:id="@+id/palladiumType"
+                            android:id="@+id/palladiumCurrentPrice"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="8dp"
+                            android:layout_margin="10dp"
                             android:textColor="@color/black"
-                            android:textSize="16dp"
-                            android:textStyle="bold"
-                            tools:text="Paladyum" />
+                            android:textSize="24sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            tools:text="₺1.800" />
 
-                        <TextView
-                            android:id="@+id/palladiumPurity"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="4dp"
-                            android:textColor="@color/black"
-                            android:textSize="16sp"
-                            tools:text="Saflık: %99.9" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
-                        <TextView
-                            android:id="@+id/palladiumWeight"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="4dp"
-                            android:textColor="@color/black"
-                            android:textSize="16sp"
-                            tools:text="Ağırlık: 1 gram" />
+                </androidx.cardview.widget.CardView>
 
-                    </LinearLayout>
+            </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/palladiumPriceChange"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="10dp"
-                        android:textColor="#289104"
-                        android:textSize="24sp"
-                        app:layout_constraintBottom_toBottomOf="@id/ivPalladium"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/ivPalladium"
-                        tools:text="+%3" />
+            <com.github.mikephil.charting.charts.LineChart
+                android:visibility="gone"
+                android:id="@+id/lineChart"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"/>
 
-                    <TextView
-                        android:id="@+id/palladiumCurrentPrice"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:textColor="@color/black"
-                        android:textSize="24sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        tools:text="₺1.800" />
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/textViewPriceGram24k"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="24 Ayar Altın Fiyatı: "
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:paddingBottom="8dp"/>
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/textViewPriceGram22k"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="22 Ayar Altın Fiyatı: "
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:paddingBottom="8dp"/>
 
-            </androidx.cardview.widget.CardView>
+                <TextView
+                    android:id="@+id/textViewPriceGram21k"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="21 Ayar Altın Fiyatı: "
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:paddingBottom="8dp"/>
+
+                <TextView
+                    android:id="@+id/textViewPriceGram18k"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="18 Ayar Altın Fiyatı: "
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:paddingBottom="8dp"/>
+
+                <TextView
+                    android:id="@+id/textViewAskPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Alış Fiyatı: "
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:paddingBottom="8dp"/>
+
+                <TextView
+                    android:id="@+id/textViewBidPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Satış Fiyatı: "
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:paddingBottom="8dp"/>
+
+                <TextView
+                    android:id="@+id/textViewChange"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Değişim: "
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:paddingBottom="8dp"/>
+            </LinearLayout>
 
         </LinearLayout>
 
-        <com.github.mikephil.charting.charts.LineChart
-            android:id="@+id/lineChart"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:visibility="gone" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone">
-
-            <TextView
-                android:id="@+id/textViewPriceGram24k"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingBottom="8dp"
-                android:text="24 Ayar Altın Fiyatı: "
-                android:textColor="@android:color/black"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/textViewPriceGram22k"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingBottom="8dp"
-                android:text="22 Ayar Altın Fiyatı: "
-                android:textColor="@android:color/black"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/textViewPriceGram21k"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingBottom="8dp"
-                android:text="21 Ayar Altın Fiyatı: "
-                android:textColor="@android:color/black"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/textViewPriceGram18k"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingBottom="8dp"
-                android:text="18 Ayar Altın Fiyatı: "
-                android:textColor="@android:color/black"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/textViewAskPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingBottom="8dp"
-                android:text="Alış Fiyatı: "
-                android:textColor="@android:color/black"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/textViewBidPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingBottom="8dp"
-                android:text="Satış Fiyatı: "
-                android:textColor="@android:color/black"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/textViewChange"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingBottom="8dp"
-                android:text="Değişim: "
-                android:textColor="@android:color/black"
-                android:textSize="18sp" />
-        </LinearLayout>
-
-    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </layout>
-
