@@ -25,17 +25,19 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <ImageView
                     android:id="@+id/ivCurrency"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/gold"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/gold" />
+
                 <ImageView
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/gold_gradient_bg"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/gold_gradient_bg" />
 
 
 
@@ -103,7 +105,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text='@{"+%"+goldInfo.change}'
+                    android:text='@{"% "+goldInfo.change}'
                     android:textColor="#FFFFFF"
                     android:textSize="18sp"
                     android:background="#80000000"
