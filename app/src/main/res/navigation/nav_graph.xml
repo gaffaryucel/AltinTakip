@@ -12,9 +12,22 @@
         <action
             android:id="@+id/action_homeFragment_to_addJewelryFragment"
             app:destination="@id/addJewelryFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_jewelryDetailsFragment"
+            app:destination="@id/jewelryDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/addJewelryFragment"
         android:name="com.example.altntakip.view.AddJewelryFragment"
-        android:label="AddJewelryFragment" />
+        tools:layout="@layout/fragment_add_jewelry"/>
+    <fragment
+        android:id="@+id/jewelryDetailsFragment"
+        android:name="com.example.altntakip.view.JewelryDetailsFragment"
+        android:label="fragment_jewelry_details"
+        tools:layout="@layout/fragment_jewelry_details" >
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
+
 </navigation>

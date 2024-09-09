@@ -7,13 +7,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.example.altntakip.adapter.GoldAdapter
+import com.example.altntakip.adapter.JewelryAdapter
 import com.example.altntakip.api.FinanceService
 import com.example.altntakip.databinding.FragmentHomeBinding
 import com.example.altntakip.model.CurrencyData
 import com.example.altntakip.model.FinanceResponse
+import com.example.altntakip.model.JewelryModel
 import com.example.altntakip.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.Call
@@ -28,6 +31,7 @@ class HomeFragment : Fragment() {
     private val viewModel : HomeViewModel by viewModels()
     private lateinit var binding: FragmentHomeBinding
     private lateinit var goldAdapter: GoldAdapter
+    private lateinit var jewelryAdapter: JewelryAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,6 +46,7 @@ class HomeFragment : Fragment() {
 
         // RecyclerView'ı yatay olarak ayarlayın
         binding.recyclerViewGold.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        binding.recyclerViewJewelry.layoutManager = GridLayoutManager(requireContext(),2)
 
         // PagerSnapHelper'ı oluşturun ve RecyclerView'a ekleyin
         val snapHelper = PagerSnapHelper()
@@ -49,7 +54,9 @@ class HomeFragment : Fragment() {
 
         // Adapter'ı oluşturun ve RecyclerView'a bağlayın
         goldAdapter = GoldAdapter()
+        jewelryAdapter = JewelryAdapter()
         binding.recyclerViewGold.adapter = goldAdapter
+        binding.recyclerViewJewelry.adapter = jewelryAdapter
 
         // Adapter altına indicator eklendi
         binding.circleindicator.attachToRecyclerView(binding.recyclerViewGold,snapHelper)
@@ -58,6 +65,7 @@ class HomeFragment : Fragment() {
 
         viewModel.getGoldData()
 
+        viewModel.getBestVillas(20)
         // Altın fiyatlarını çek
     }
 
@@ -73,6 +81,13 @@ class HomeFragment : Fragment() {
         viewModel._goldLiveData.observe(viewLifecycleOwner) {
             goldAdapter.submitList(it)
         }
+
+        viewModel.jewelryList.observe(viewLifecycleOwner) { villas ->
+            if (villas != null) {
+                jewelryAdapter.jewelryList = villas
+            }
+        }
+
     }
 
 }
