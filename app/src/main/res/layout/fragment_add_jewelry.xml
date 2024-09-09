@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -10,18 +10,43 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- ID -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ID"
-            android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/etJewelryId"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter ID" />
+          <ImageView
+              android:background="@drawable/black_corner_bg"
+              android:padding="150dp"
+              android:src="@drawable/select_image"
+              android:scaleType="centerCrop"
+              android:id="@+id/ivJewelryCover"
+              android:layout_margin="10dp"
+              android:layout_width="match_parent"
+              android:layout_height="200dp"/>
+
+
+     <HorizontalScrollView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+           <ImageView
+               android:background="@drawable/black_corner_bg"
+               android:padding="30dp"
+               android:id="@+id/ivOtherJewelryImage"
+               android:src="@drawable/select_image"
+               android:layout_margin="5dp"
+               android:layout_width="90dp"
+               android:layout_height="90dp"/>
+           <androidx.recyclerview.widget.RecyclerView
+               android:id="@+id/rvOtherJewelryImage"
+               android:orientation="horizontal"
+               app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+     </HorizontalScrollView>
 
         <!-- Name -->
         <TextView

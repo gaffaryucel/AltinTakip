@@ -13,20 +13,54 @@
             name="palladiumInfo"
             type="com.example.altntakip.model.GoldInfo" />
     </data>
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewGold"
+        android:layout_height="wrap_content">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewGold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:text="Diğer Ürünler"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:text="Tümünü Gör"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewJewelry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" />
 
 
             <LinearLayout
+                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -291,80 +325,82 @@
 
             </LinearLayout>
 
-        <com.github.mikephil.charting.charts.LineChart
-            android:visibility="gone"
-            android:id="@+id/lineChart"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"/>
+            <com.github.mikephil.charting.charts.LineChart
+                android:visibility="gone"
+                android:id="@+id/lineChart"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"/>
 
-        <LinearLayout
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/textViewPriceGram24k"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="24 Ayar Altın Fiyatı: "
-                android:textSize="18sp"
-                android:textColor="@android:color/black"
-                android:paddingBottom="8dp"/>
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/textViewPriceGram24k"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="24 Ayar Altın Fiyatı: "
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:paddingBottom="8dp"/>
 
-            <TextView
-                android:id="@+id/textViewPriceGram22k"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="22 Ayar Altın Fiyatı: "
-                android:textSize="18sp"
-                android:textColor="@android:color/black"
-                android:paddingBottom="8dp"/>
+                <TextView
+                    android:id="@+id/textViewPriceGram22k"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="22 Ayar Altın Fiyatı: "
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:paddingBottom="8dp"/>
 
-            <TextView
-                android:id="@+id/textViewPriceGram21k"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="21 Ayar Altın Fiyatı: "
-                android:textSize="18sp"
-                android:textColor="@android:color/black"
-                android:paddingBottom="8dp"/>
+                <TextView
+                    android:id="@+id/textViewPriceGram21k"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="21 Ayar Altın Fiyatı: "
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:paddingBottom="8dp"/>
 
-            <TextView
-                android:id="@+id/textViewPriceGram18k"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="18 Ayar Altın Fiyatı: "
-                android:textSize="18sp"
-                android:textColor="@android:color/black"
-                android:paddingBottom="8dp"/>
+                <TextView
+                    android:id="@+id/textViewPriceGram18k"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="18 Ayar Altın Fiyatı: "
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:paddingBottom="8dp"/>
 
-            <TextView
-                android:id="@+id/textViewAskPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Alış Fiyatı: "
-                android:textSize="18sp"
-                android:textColor="@android:color/black"
-                android:paddingBottom="8dp"/>
+                <TextView
+                    android:id="@+id/textViewAskPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Alış Fiyatı: "
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:paddingBottom="8dp"/>
 
-            <TextView
-                android:id="@+id/textViewBidPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Satış Fiyatı: "
-                android:textSize="18sp"
-                android:textColor="@android:color/black"
-                android:paddingBottom="8dp"/>
+                <TextView
+                    android:id="@+id/textViewBidPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Satış Fiyatı: "
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:paddingBottom="8dp"/>
 
-            <TextView
-                android:id="@+id/textViewChange"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Değişim: "
-                android:textSize="18sp"
-                android:textColor="@android:color/black"
-                android:paddingBottom="8dp"/>
+                <TextView
+                    android:id="@+id/textViewChange"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Değişim: "
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:paddingBottom="8dp"/>
+            </LinearLayout>
+
         </LinearLayout>
 
-    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </layout>
 

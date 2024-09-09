@@ -1,38 +1,22 @@
 package com.example.altntakip.viewmodel
 
-import android.content.Context
-import android.graphics.Color
-import android.util.Log
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
-import com.example.altntakip.R
-import com.example.altntakip.databinding.FragmentHomeBinding
-import com.example.altntakip.model.AlphaVantageResponse
-import com.example.altntakip.model.CurrencyData
 import com.example.altntakip.model.FinanceResponse
 import com.example.altntakip.model.GoldInfo
-import com.example.altntakip.model.GoldPriceResponse
 import com.example.altntakip.model.JewelryModel
 import com.example.altntakip.repo.ApiRepository
 import com.example.altntakip.repo.FirebaseRepository
 import com.example.altntakip.util.CurrencyType
-import com.example.altntakip.util.Metals
-import com.github.mikephil.charting.components.XAxis
-import com.github.mikephil.charting.data.Entry
-import com.github.mikephil.charting.data.LineData
-import com.github.mikephil.charting.data.LineDataSet
-import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+import com.example.altntakip.util.Resource
+import com.example.altntakip.util.toJewelry
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.UUID
 import javax.inject.Inject
 
 // HomeViewModel.kt
@@ -41,6 +25,14 @@ class HomeViewModel @Inject constructor(
     private val goldRepository: ApiRepository,
     private val firebaseRepository: FirebaseRepository
 ) : ViewModel() {
+
+    private var _firebaseMessage = MutableLiveData<Resource<Boolean>>()
+    val firebaseMessage: LiveData<Resource<Boolean>>
+        get() = _firebaseMessage
+
+    private var _jewelryList = MutableLiveData<List<JewelryModel>>()
+    val jewelryList: LiveData<List<JewelryModel>>
+        get() = _jewelryList
 
     private val _goldPriceLiveData = MutableLiveData<List<GoldInfo>?>()
     val goldPriceLiveData: LiveData<List<GoldInfo>?> get() = _goldPriceLiveData
@@ -102,6 +94,29 @@ class HomeViewModel @Inject constructor(
             }
         })
     }
+
+    fun getBestVillas(limit: Long) = viewModelScope.launch {
+        _firebaseMessage.value = Resource.loading(null)
+        firebaseRepository.getAllJewelryFromFirestore(limit)
+            .addOnSuccessListener {
+                println("it : "+it)
+                val villaList = mutableListOf<JewelryModel>()
+                for (document in it.documents) {
+                    println("doc : "+document)
+                    // Belgeden her bir videoyu çek
+                    document.toJewelry()?.let { villa ->
+                        villaList.add(villa)
+                        println("villa : "+villa)
+                    }
+                }
+                _jewelryList.value = villaList
+                _firebaseMessage.value = Resource.success(null)
+            }.addOnFailureListener { exception ->
+                // Hata durzumunda işlemleri buraya ekleyebilirsiniz
+                _firebaseMessage.value = Resource.error("Belge alınamadı. Hata: $exception", null)
+            }
+    }
+
 
 
 }
