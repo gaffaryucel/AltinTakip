@@ -58,6 +58,11 @@ class HomeFragment : Fragment() {
         binding.recyclerViewGold.adapter = goldAdapter
         binding.recyclerViewJewelry.adapter = jewelryAdapter
 
+        // Adapter altına indicator eklendi
+        binding.circleindicator.attachToRecyclerView(binding.recyclerViewGold,snapHelper)
+        goldAdapter.registerAdapterDataObserver(binding.circleindicator.adapterDataObserver)
+
+
         viewModel.getGoldData()
 
         viewModel.getBestVillas(20)

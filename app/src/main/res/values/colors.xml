@@ -5,4 +5,5 @@
     <color name="red">#9B0E0E</color>
     <color name="green">#237C03</color>
     <color name="gold">#FFD700</color>
+    <color name="indicator">#FF000000</color>
 </resources>

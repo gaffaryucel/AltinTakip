@@ -1,14 +1,17 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="silverInfo"
             type="com.example.altntakip.model.GoldInfo" />
+
         <variable
             name="platinumInfo"
             type="com.example.altntakip.model.GoldInfo" />
+
         <variable
             name="palladiumInfo"
             type="com.example.altntakip.model.GoldInfo" />
@@ -403,4 +406,3 @@
 
     </androidx.core.widget.NestedScrollView>
 </layout>
-
